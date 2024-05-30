@@ -1,8 +1,28 @@
 // components/Cart.js
 import React from 'react';
+import casualShoes from '../images/casual-shoes.webp';
+import ankleShoe from '../images/ankleshoe.jpg';
+import cumpus1 from '../images/cumpus-1.png';
+import cumpus2 from '../images/cumpus-2.jfif';
+import usPolo from '../images/us-polo.png';
+import asianJfif from '../images/asian.jfif';
+import asianJpg from '../images/asian.jpg';
+import airwaeve from '../images/airwaeve.jpg';
+
 
 const Cart = ({ cartItems, addToCart, removeFromCart }) => {
   const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+  const shoeImages = {
+    'casual-shoes.webp': casualShoes,
+    'ankleshoe.jpg': ankleShoe,
+    'cumpus-1.png': cumpus1,
+    'cumpus-2.jfif': cumpus2,
+    'us-polo.png': usPolo,
+    'asian.jfif': asianJfif,
+    'asian.jpg': asianJpg,
+    'airwaeve.jpg': airwaeve,
+  };
 
   return (
     <div className="cart">
@@ -14,7 +34,9 @@ const Cart = ({ cartItems, addToCart, removeFromCart }) => {
           cartItems.map(item => (
             <div key={item.id} className="cart-item">
               <div className='cart-img-box'>
-                <img src={item.image} alt={item.name} className="cart-item-image" />
+                <img
+                  src={shoeImages[item.image]}
+                  alt={item.name} className="cart-item-image" />
               </div>
               <div className='side-box-item-cart'>
                 <h3>{item.name}</h3>
